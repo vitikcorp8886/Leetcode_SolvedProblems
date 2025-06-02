@@ -1,0 +1,52 @@
+268. Missing Number
+https://leetcode.com/problems/missing-number/
+
+Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+Example 1:
+
+Input: nums = [3,0,1]
+
+Output: 2
+
+Explanation:
+
+n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
+
+
+
+//puts all values in hashmap, then iterates till the length of arr, where missing in hashmap, return value
+class Solution2 {
+    //Sum of all numbers 
+    public int missingNumber(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap();
+
+        for(int i = 0 ; i < nums.length; i++){
+                map.putIfAbsent(nums[i],1);
+        }
+
+        for(int i=0; i<=nums.length ; i++)
+        {
+            if(map.containsKey(i))
+                continue;
+            return i;
+        }
+    return 0;
+    }
+}
+
+
+
+//add the range of numbers, and add the numbers of array...difference is the answer
+class Solution{
+    public int missingNumber(int[] nums) {
+        int sum = (nums.length * (nums.length + 1)) / 2;
+
+        int sumArray = 0;
+        for(int i : nums){
+            sumArray += i;
+        }
+        
+        return sum - sumArray;
+    }
+
+}
