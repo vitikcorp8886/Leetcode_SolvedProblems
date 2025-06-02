@@ -13,7 +13,7 @@ Explanation:
 n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
 
 
-
+SOLUTION 1
 //puts all values in hashmap, then iterates till the length of arr, where missing in hashmap, return value
 class Solution2 {
     //Sum of all numbers 
@@ -35,7 +35,7 @@ class Solution2 {
 }
 
 
-
+SOLUTION 2
 //add the range of numbers, and add the numbers of array...difference is the answer
 class Solution{
     public int missingNumber(int[] nums) {
