@@ -1,0 +1,61 @@
+136. Single Number
+
+//https://leetcode.com/problems/single-number/
+/*
+*  put all elements in hashmap and store the frequency
+* iterate through hashmap and element whose frequency is 1 is the single number
+*/
+class Solution2 {
+    public int singleNumber(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap();
+        
+        for(int i : nums){
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+
+        for(int key : map.keySet())
+        {
+            if(map.get(key) == 1)
+                return key;
+        }
+
+        return 0;
+    }
+}
+
+
+    /*
+     * element XOR with itself gives 0 
+     * eg 1 1 2
+     * xor 0 with first value
+     * 1 ^ 1 -> 0 
+     * 
+     * 0 ^ 2 -> 2
+     * 
+     * 
+     * 
+     * eg 1 2 1
+     * 0 ^ 1 -> 1
+     * 
+     * 1 ^ 2 -> 001 ^ 010 -> 011 which is 3
+     * 
+     * 3 ^ 1 -> 011 ^ 001 -> 010 which is 2...the answer
+     *  
+     * */
+
+
+class Solution {
+public int singleNumber(int[] nums) {
+        
+    	int value = 0;
+    	
+    	for(int i : nums)
+    	{
+    		value = value ^ i;
+    	}
+    	
+    	return value;
+    	
+
+    }
+}
